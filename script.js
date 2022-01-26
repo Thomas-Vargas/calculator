@@ -51,16 +51,22 @@ function keyboardInput(e) {
     if(e.key >= 0 && e.key <= 9) {
         appendNumber(e.key)
     } 
-    else if(e.key === "=" || e.key === "Enter") {
+    else if(e.key === "=") {
         evaluate();
     } 
+    else if(e.key === ".") {
+        appendPeriod();
+    }
     else if(e.key === "Backspace") {
         deleteDigit();
-    } else if(e.key === "Escape") {
+    }
+    else if(e.key === "Escape") {
         clear();
-    } else if(e.key === "+") {
+    }
+    else if(e.key === "+") {
         setOperation(e.key);
-    }else if(e.key === "-") {
+    }
+    else if(e.key === "-") {
         setOperation(e.key);
     }
     else if(e.key === "/" || e.key === "*") {
@@ -107,7 +113,8 @@ function roundResult(number) {
 function evaluate() {
     if(currentOperation === null || shouldResetScreen) {
         return;
-    } else if(currentOperation === "÷" && currentOperationScreen.textContent === "0") {
+    } 
+    if(currentOperation === "÷" && currentOperationScreen.textContent === "0") {
         alert("I don't think so!");
     };
 
@@ -115,7 +122,7 @@ function evaluate() {
     currentOperationScreen.textContent = roundResult(
         operate(currentOperation, firstOperand, secondOperand)
     );
-    lastOperationScreen.textContent = `${firstOperand} ${currentOperation} ${secondOperand}`;
+    lastOperationScreen.textContent = `${firstOperand} ${currentOperation} ${secondOperand} =`;
     currentOperation = null;
 };
 
@@ -137,7 +144,7 @@ function operate(operator, num1, num2) {
         }
     } else {
         return null;
-    }
+    };
 };
 
 function add(num1, num2) {
