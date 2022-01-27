@@ -18,6 +18,7 @@ periodButton.addEventListener("click", appendPeriod);
 equalsButton.addEventListener("click", evaluate);
 window.addEventListener("keydown", keyboardInput);
 
+
 numberButtons.forEach((button) =>
   button.addEventListener('click', () => appendNumber(button.textContent))
 );
@@ -51,7 +52,10 @@ function keyboardInput(e) {
     if(e.key >= 0 && e.key <= 9) {
         appendNumber(e.key)
     } 
-    else if(e.key === "=") {
+    else if(e.key === "=" || e.key == "Enter") {
+        if (e.key === "Enter") {
+            e.preventDefault();
+        }
         evaluate();
     } 
     else if(e.key === ".") {

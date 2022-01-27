@@ -9,6 +9,14 @@
     --footer: #383838;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
 body {
     background-color: var(--light-gray);
     display: flex;
@@ -17,14 +25,6 @@ body {
     font-family: 'Lato', sans-serif;
     /* footer support */
     margin-bottom: 100px;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
 }
 
 html {
